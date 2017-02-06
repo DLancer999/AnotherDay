@@ -396,7 +396,7 @@ def initializeScript():
         'objective functions related to aerodynamics. Applications included shape and '
         'flow-control optimization problems in internal and external flows of both '
         'academic and industrial origin. Important contributions included, among others, '
-        'the analytic differentiation of the k-ω SST turbulence model and a novel adjoint '
+        'the analytic differentiation of the k-w SST turbulence model and a novel adjoint '
         'formulation which can compute sensitivity derivatives with the accuracy of the '
         'most accurate continuous adjoint formulation and as fast as the fastest one."')
     phdThesisExplainedFullTech.addText(phdThesisExplainedFullTechText)
