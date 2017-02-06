@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*- 
 #  
 # Copyright (c) Kavvadias Ioannis. All rights reserved.  
 # email: kavvadiasj@hotmail.com
