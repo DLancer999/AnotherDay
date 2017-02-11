@@ -247,11 +247,6 @@ def actionAskAboutAdjoint(allText,specialVars):
 #--------------------------------#
     #heard no new keywords
 
-    #set adjoint answer to proper math background level
-    myTag = findTag(allText, 'adjExplained')
-    interNameTag = allText[doorTag].findText('INTERVIEWERSNAME')
-    allText[doorTag].text[interNameTag] = specialVars.interviewersName
-    
     myTag = findTag(allText,'adjExplained')
     active = True
     if specialVars.cfd:
