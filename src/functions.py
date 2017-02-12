@@ -42,14 +42,31 @@ def selector(maxValue):
 
 #for debugging purposes
 #--------------------------------#
-def seeWholeTree(allText):
+def seeWholeTree(allText,specialVars):
 #--------------------------------#
     for text in allText:
         print ('') 
         print ('')
-        print (text.name)
+        print ('----> {} <----'.format(text.name))
+        print ('testing unique behaviour', end=" "),
+        text.uniqueBehaviour(allText,specialVars)
+        print ('-OK-')
+        print ('testing text and options')
         text.printText()
-        text.printOptions()
+        if text.lastParagraph:
+            print ('')
+            print ('Ending Paragraph - No Options to Show')
+            continue
+        text.printAllOptions()
+        print ('')
+        print ('options target')
+        for iOpt,opt in enumerate(text.options):
+            print('{}--> {}'.format(iOpt+1,allText[text.optionsTarget[iOpt]].name))
+        #text.optionsTarget[actuallOptionSelected]
+
+    print ('')
+    print ('')
+    print ('--->Test Completed Successfuly<---')
 #functionEnd
 
 #--------------------------------#
@@ -94,7 +111,8 @@ class dialogue:
         #leave two empty lines
         print ('\n')
         if len(self.text) == 0:
-            print ('text for dialogue {} is not defined'.format(self.name))
+            print ('ERROR::printText::text for dialogue {} is not defined'.format(self.name))
+            endProg()
         else:
            #for line in self.text:
            #    print (line)
@@ -134,7 +152,7 @@ class dialogue:
         for iOpt,optName in enumerate(self.optionsName):
             if name==optName:
                 return iOpt
-        print ('option with name {} not found in dialogue {}'.format(name,self.name))
+        print ('ERROR::findOption::option with name {} not found in dialogue {}'.format(name,self.name))
         endProg()
         return -1
     #functionEnd
@@ -145,16 +163,17 @@ class dialogue:
         for iTxt,txtName in enumerate(self.textName):
             if name==txtName:
                 return iTxt
-        print ('text with name {} not found in dialogue {}'.format(name,self.name))
+        print ('ERROR::findText::text with name {} not found in dialogue {}'.format(name,self.name))
         endProg()
         return -1
     #functionEnd
 
     #--------------------------------#
-    def printOptions(self):
+    def printActiveOptions(self):
     #--------------------------------#
         if len(self.options) == 0:
-            print ('options for dialogue {} are not defined'.format(self.name))
+            print ('ERROR::printActiveOptions::options for dialogue {} are not defined'.format(self.name))
+            endProg()
         else:
             iActiveOption = 0
             print ('-------------------------------------')
@@ -168,6 +187,25 @@ class dialogue:
                         subsequent_indent=' ' * 3,
                         width=65,
                         ))
+    #functionEnd
+
+    #--------------------------------#
+    def printAllOptions(self):
+    #--------------------------------#
+        if len(self.options) == 0:
+            print ('ERROR::printAllOptions::options for dialogue {} are not defined'.format(self.name))
+            endProg()
+        else:
+            iActiveOption = 0
+            print ('-------------------------------------')
+            for iOption,option in enumerate(self.options):
+               printString = str(iOption)+'. '+option
+               dedented_text = textwrap.dedent(printString).strip()
+               print(textwrap.fill(dedented_text,
+                   initial_indent='',
+                   subsequent_indent=' ' * 3,
+                   width=65,
+                   ))
     #functionEnd
 
     #--------------------------------#
@@ -239,7 +277,7 @@ def setCharactersName(specialVars):
     charName = input('>')
 
     #set name prefix
-    titles = ['Mr.', 'Mrs.', 'Miss', 'Dr.', 'Other']
+    titles = ['Mr.', 'Mrs.', 'Ms.', 'Dr.', 'Other']
 
     print ('Character\'s title?')
     for i,title in enumerate(titles):
@@ -267,7 +305,7 @@ def findTag(allText, name):
     for text in allText:
         if text.name == name:
             return text.tag
-    print ('Dialog {} not found'.format(name))
+    print ('ERROR::findTag::Dialog {} not found'.format(name))
     endProg()
     return -1
 #functionEnd

@@ -19,10 +19,10 @@ def initializeScript():
     buildingEntrance = dialogue(allText, 'buildingEntrance', NA, 'yes')
 
     buildingEtranceText = ('What a weird day. As if you hadn\'t had enough work to do, let '
-        'alone being a rush hour, they sent you to interview a guy at his house. Who is this '
+        'alone it being a rush hour, they sent you to interview a guy at his house. Who is this '
         'Kavvadias Giannis anyway? Feeling irritated, you enter his apartment block. '
         'Based on the position of his doorbell '
-        'his apartment should be on the  fifth floor.')
+        'his apartment should be on the fifth floor.')
     buildingEntrance.addText(buildingEtranceText)
 
     takeStairs = dialogue(allText, 'stairs', 'Take the stairs', NA)
@@ -38,15 +38,15 @@ def initializeScript():
     takeElevator.addText(takeElevatorText)
 
     apartmentDoor = dialogue(allText, 'apartmentDoor', cnt, NA,actionApartmentDoor)
-    apartmentDoorText=( 'As you reach the fifth floor, you see a tall Caucasian male with short '
-        'dark hair waiting for you at the door. "Hello, ')
+    apartmentDoorText=( 'As you reach the fifth floor, you see a handsome tall man '
+        'waiting for you at the door. "Hello, ')
     apartmentDoor.addText(apartmentDoorText)
     apartmentDoor.addText('','INTERVIEWERSNAME',True)
     apartmentDoor.addText(' I presume", he says.','',True)
 
     greeting1 = dialogue(allText, 'politeGreeting1', '"Yes, I am here for the interview."',                 NA)
-    greeting2 = dialogue(allText, 'politeGreeting2', '"Hello Mr. Kavvadias, I am here for the interview."', NA)
-    greeting3 = dialogue(allText, 'politeGreeting3', '"Hello Dr. Kavvadias, I am here for the interview."', NA)
+    greeting2 = dialogue(allText, 'politeGreeting2', '"Hello Giannis, I am here for the interview."', NA)
+    greeting3 = dialogue(allText, 'politeGreeting3', '"Good morning Dr. Kavvadias, I am here for the interview."', NA)
 
     answer = '"Nice to meet you'
     answer2= ', I\'m Kavvadias Giannis' 
@@ -92,13 +92,13 @@ def initializeScript():
     livingRoomExplore = dialogue(allText, 'livingRoomExplore', cnt, examineOther)
     livingRoomExploreText = ( 'You are standing in the middle of the living room. ' 
         'Giannis is in the kitchen making coffee. On the left side of the room, '
-        'right next to his desk, is a big library. Next to it are a bunch of '
+        'right next to his desk, there is a big bookcase. Next to it are a bunch of '
         'certificates and diplomas hanging on the wall. In front of you is a sofa '
         'opposing a big TV monitor. ') 
     livingRoomExplore.addText(livingRoomExploreText)
 
-    library  = dialogue(allText, 'library', 'Examine his library', examineOther)
-    library.addText('The library has four selves, with each containing different kind of items.')
+    library  = dialogue(allText, 'library', 'Examine his bookcase', examineOther)
+    library.addText('The bookcase has four selves, with each containing different kind of items.')
 
     shelf1 = dialogue(allText, 'shelf1', 'Examine first self (contains his theses and other papers)', examineOther) 
     shelf1Text = ( 'In this self you see his PhD thesis, his diploma thesis and a bunch '
@@ -138,7 +138,7 @@ def initializeScript():
     shelf4 = dialogue(allText, 'shelf4', 'Examine forth self (contains movies and computer/console games)', examineOther) 
     shelf4Text = ( 'Here he keeps his movies, most of which are either filmed on high budget '
         'with awesome visual effects or they are medieval in setting. Also he has his video '
-        'games stacked next to the movies. Most of them are for PC with some for '
+        'games stacked next to the movies. Most of them are for PC, while the rest for '
         'consoles. There are a lot of beat\'em up, RPGs and action games. Probably '
         'he doesn\'t like adventure games.')
     shelf4.addText(shelf4Text)
@@ -162,8 +162,8 @@ def initializeScript():
     tvSet.addText(tvSetText)
 
     desk     = dialogue(allText, 'desk'   , 'Examine his desk', examineOther, actionExamineDesk)
-    deskText = ( 'The first thing that pops into your mind as you look at his desk is that '
-        'it is neatly organized, too neatly organized. No engineer that you know keeps his ' 
+    deskText = ( 'The first thing that pops into your head as you look at his desk is that '
+        'it is neatly organized, too neatly organized. No engineer that you know would keep his ' 
         'desk that organized. He surely did that because he was expecting you. Nevertheless, '
         'he gets points for effort. On it, there are a desktop with two monitors plugged in '
         'and a laptop, both of which are on standby mode. ')
@@ -253,6 +253,7 @@ def initializeScript():
         'you behaved. Even worse yet, what are you going to tell your boss? Surely you cannot '
         'tell him that you tried to crack the candidate\'s computer! Not a good day... for sure!')
     justLeave.addText(justLeaveText)
+    justLeave.lastParagraph = True
 
     chargeHim = dialogue(allText, 'chargeHim', 'Panic and charge him!', NA)
     chargeHimText = ( 'Without thinking it through, you unleash your best war cry and charge him! '
@@ -291,16 +292,16 @@ def initializeScript():
         'you put it back in its original position.')
     putDieBack.addText(putDieBackText)
 
-    w8ForHim = dialogue(allText, 'w8ForHim', 'sit on the sofa and wait for him to come back', NA, actionBeverages)
+    w8ForHim = dialogue(allText, 'w8ForHim', 'Sit on the sofa and wait for him to come back', NA, actionBeverages)
     w8ForHimText = ( 'After a couple of minutes, Giannis comes out of the kitchen, holding a '
         'tray with ') 
     w8ForHim.addText(w8ForHimText)
     w8ForHim.addText('','BEVERAGES',True)
-    w8ForHimText = ( '. He on the sofa waiting for you to start the interview.')
+    w8ForHimText = ( '. He sits on the sofa waiting for you to start the interview.')
     w8ForHim.addText(w8ForHimText,'',True)
 
     askOther = 'Talk about something else'
-    interviewStart = dialogue(allText, 'interviewStart', 'Start interview', askOther)
+    interviewStart = dialogue(allText, 'interviewStart', cnt, askOther)
     interviewStart.addText('You\'d like to')
 
     typicalQualifications = dialogue(allText, 'typicalQualifications', 'ask about his standard qualifications', askOther, actionAskAboutTypicalQual)
@@ -312,8 +313,8 @@ def initializeScript():
         'University of Athens, or NTUA for short. I did my diploma thesis at the fluids section, '
         'where I also continued afterwards and earned my PhD in optimization and design methods, for CFD '
         'applications. I finished my PhD last February. After that I went to fulfill '
-        'the Greek mandatory military service and currently I am working as postdoctoral '
-        'researcher at NTUA."')
+        'the Greek mandatory military service and currently I am working as research '
+        'associate at NTUA."')
     eduBackground.addText(eduBackgroundText)
 
     techSkills = dialogue(allText, 'techSkills', '"What are your technical skills?"', NA, actionAskAboutTechSkills)
@@ -366,7 +367,7 @@ def initializeScript():
         'a spoiler in the back of it or propose a way to optimize an already existing one."')
     phdThesisExplainedNotTech.addText(phdThesisExplainedNotTechText)
 
-    phdThesisExplainedLittleTech = dialogue(allText, 'phdThesisExplainedLittleTech', '"I have an approximate knowledge of math and physics!"', '"Can you tone down the technical details a bit?"', actionAskAboutPhdThesisLittleTech)
+    phdThesisExplainedLittleTech = dialogue(allText, 'phdThesisExplainedLittleTech', '"I have an approximate knowledge of math and physics!"', '"Could you tone down the technical details a bit?"', actionAskAboutPhdThesisLittleTech)
     phdThesisExplainedLittleTechText = ('"Well, my PhD was in the field of deterministic optimization '
         'methods, for aerodynamic applications, using the continuous adjoint method. '
         'Applications '
@@ -405,11 +406,12 @@ def initializeScript():
     adjExplainedText = ('"Adjoint, not to be confused with the classical adjoint of linear '
         'algebra, is a mathematical trick to efficiently compute the sensitivity '
         'derivative, the gradient of a function, with respect to a design variable, the '
-        'control variable of the problem. It is usually called the dual problem because '
-        'the adjoint problem shares some attributes of the original, but not exactly. '
+        'control variable of the problem. To do so, an extra set of variables is used. '
+        'These extra variables are Lagrangian multipliers. This is usually called the dual '
+        'problem because the adjoint problem shares some attributes of the initial, but not exactly. '
         'It is better to think of it like witchcraft... where witches are mathematicians, '
-        'adjoint is a big spoon and the optimization problem is the cauldron! Wait, '
-        'I don\'t think that this makes any sense... but then again math sure sounds weird '
+        'adjoint is a big spoon and the optimization problem is a cauldron! Wait, '
+        'I don\'t think that this makes any sense... but then again math do sound weird '
         'some times!"')
     adjExplained.addText(adjExplainedText)
 

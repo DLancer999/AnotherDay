@@ -12,6 +12,12 @@ from functions import *
 
 from script import initializeScript
 
+#enable to print all dialogues and options // for debugging
+#allText = initializeScript()
+#specialVars = specialStuff(allText)
+#seeWholeTree(allText, specialVars)
+#endProg()
+
 replayGame = True
 while replayGame:
     #Start game 
@@ -29,7 +35,7 @@ while replayGame:
     #input characters name
     setCharactersName(specialVars)
 
-    #short-curcuit for test!
+    #short-circuit for testing!
     #runningTag = findTag(allText, 'typicalQualifications')
 
     #Lets play!
@@ -42,7 +48,7 @@ while replayGame:
         gameRunning = not allText[runningTag].lastParagraph
         if not gameRunning: continue
         #show available options
-        allText[runningTag].printOptions()
+        allText[runningTag].printActiveOptions()
         #retrive next dialogue
         optionSelected = selector(allText[runningTag].nActiveOptions())-1
         actuallOptionSelected = allText[runningTag].mapToActiveOptions(optionSelected)
@@ -57,5 +63,4 @@ while replayGame:
 
 printTnx()
 input()
-#seeWholeTree(initializeScript())
-    
+
